@@ -20,7 +20,7 @@ public class Triangle {
         if (biggestSide == midSide && biggestSide == smallestSide)
             return Equilateral;
 
-        if (biggestSide == midSide || biggestSide == smallestSide || midSide == smallestSide)
+        if (biggestSide == midSide || midSide == smallestSide)
             return Isosceles;
 
         if (Math.pow(biggestSide, 2) == Math.pow(midSide, 2) + Math.pow(smallestSide, 2))
