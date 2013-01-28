@@ -9,14 +9,19 @@ public class Queue {
     }
 
     public Queue enqueue(int value) {
-        values[tail] = value;
-        tail = incrementAndMod(tail);
+        synchronized (values) {
+            values[tail] = value;
+            tail = incrementAndMod(tail);
+        }
         return this;
     }
 
     public int dequeue() {
-        int value = values[head];
-        head = incrementAndMod(head);
+        int value;
+        synchronized (values) {
+            value = values[head];
+            head = incrementAndMod(head);
+        }
         return value;
     }
 
