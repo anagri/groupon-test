@@ -10,4 +10,11 @@ public class TriangleTest {
     public void shouldReturnEquilateralTypeIfAllSidesEqual() {
         assertThat(new Triangle(1, 1, 1).type(), is(Triangle.Type.Equilateral));
     }
+
+    @Test
+    public void shouldReturnIsosclesIfTwoSidesEqual() {
+        assertThat(new Triangle(1, 1, 2).type(), is(Triangle.Type.Isosceles));
+        assertThat(new Triangle(1, 2, 1).type(), is(Triangle.Type.Isosceles));
+        assertThat(new Triangle(2, 1, 1).type(), is(Triangle.Type.Isosceles));
+    }
 }

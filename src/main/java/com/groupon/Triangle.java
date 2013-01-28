@@ -14,8 +14,11 @@ public class Triangle {
     public Type type() {
         if (side1 == side2 && side1 == side3)
             return Type.Equilateral;
+
+        if (side1 == side2 || side1 == side3 || side2 == side3)
+            return Type.Isosceles;
         return null;
     }
 
-    public enum Type {Equilateral}
+    public enum Type {Isosceles, Equilateral}
 }
