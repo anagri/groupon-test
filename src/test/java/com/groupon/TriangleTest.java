@@ -12,7 +12,7 @@ public class TriangleTest {
     }
 
     @Test
-    public void shouldReturnIsosclesIfTwoSidesEqual() {
+    public void shouldReturnIsoscelesIfTwoSidesEqual() {
         assertThat(new Triangle(1, 1, 2).type(), is(Triangle.Type.Isosceles));
         assertThat(new Triangle(1, 2, 1).type(), is(Triangle.Type.Isosceles));
         assertThat(new Triangle(2, 1, 1).type(), is(Triangle.Type.Isosceles));
