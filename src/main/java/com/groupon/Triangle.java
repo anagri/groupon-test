@@ -1,24 +1,36 @@
 package com.groupon;
 
 public class Triangle {
-    private final int side1;
-    private final int side2;
-    private final int side3;
+    private final int biggestSide;
+    private final int midSide;
+    private final int smallestSide;
 
     public Triangle(int side1, int side2, int side3) {
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side3 = side3;
+        this.biggestSide = max(side1, side2, side3);
+        this.smallestSide = min(side1, side2, side3);
+        this.midSide = side1 + side2 + side3 - (biggestSide + smallestSide);
     }
 
     public Type type() {
-        if (side1 == side2 && side1 == side3)
+        if (biggestSide == midSide && biggestSide == smallestSide)
             return Type.Equilateral;
 
-        if (side1 == side2 || side1 == side3 || side2 == side3)
+        if (biggestSide == midSide || biggestSide == smallestSide || midSide == smallestSide)
             return Type.Isosceles;
+
+        if (Math.pow(biggestSide, 2) == Math.pow(midSide, 2) + Math.pow(smallestSide, 2))
+            return Type.Right;
+
         return null;
     }
 
-    public enum Type {Isosceles, Equilateral}
+    private int max(int side1, int side2, int side3) {
+        return Math.max(side1, Math.max(side2, side3));
+    }
+
+    private int min(int side1, int side2, int side3) {
+        return Math.min(side1, Math.min(side2, side3));
+    }
+
+    public enum Type {Isosceles, Right, Equilateral}
 }
