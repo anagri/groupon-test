@@ -1,5 +1,7 @@
 package com.groupon;
 
+import static com.groupon.Triangle.Type.*;
+
 public class Triangle {
     private final int biggestSide;
     private final int midSide;
@@ -13,15 +15,15 @@ public class Triangle {
 
     public Type type() {
         if (biggestSide == midSide && biggestSide == smallestSide)
-            return Type.Equilateral;
+            return Equilateral;
 
         if (biggestSide == midSide || biggestSide == smallestSide || midSide == smallestSide)
-            return Type.Isosceles;
+            return Isosceles;
 
         if (Math.pow(biggestSide, 2) == Math.pow(midSide, 2) + Math.pow(smallestSide, 2))
-            return Type.Right;
+            return Right;
 
-        return null;
+        return Regular;
     }
 
     private int max(int side1, int side2, int side3) {
@@ -32,5 +34,5 @@ public class Triangle {
         return Math.min(side1, Math.min(side2, side3));
     }
 
-    public enum Type {Isosceles, Right, Equilateral}
+    public enum Type {Isosceles, Right, Regular, Equilateral}
 }
