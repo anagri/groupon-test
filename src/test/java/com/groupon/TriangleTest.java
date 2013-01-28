@@ -30,4 +30,14 @@ public class TriangleTest {
     public void shouldReturnRegularTypeIfNotOfTheKnownThreeTypes() {
         assertThat(new Triangle(1, 2, 3).type(), is(Regular));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionIfTriangleConstructedWithSideAs0() {
+        new Triangle(0, 1, 2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionIfTriangleConstructedWithSideAsNegative() {
+        new Triangle(-1, 1, 1);
+    }
 }

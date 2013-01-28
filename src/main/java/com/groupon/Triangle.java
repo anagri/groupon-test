@@ -8,6 +8,9 @@ public class Triangle {
     private final int smallestSide;
 
     public Triangle(int side1, int side2, int side3) {
+        if (side1 <= 0 || side2 <= 0 || side3 <= 0)
+            throw new IllegalArgumentException("Triangle cannot be constructed with side less than or equal to 0");
+
         this.biggestSide = max(side1, side2, side3);
         this.smallestSide = min(side1, side2, side3);
         this.midSide = side1 + side2 + side3 - (biggestSide + smallestSide);
